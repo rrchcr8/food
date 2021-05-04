@@ -21,6 +21,9 @@ public class Food implements Serializable {
         private String imageUrl;
 
 
+    public Food() {
+    }
+
     public Food(String name, String type, String description, String imageUrl) {
         this.name = name;
         this.type = type;
