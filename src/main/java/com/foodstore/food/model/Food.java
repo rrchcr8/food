@@ -5,8 +5,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table
 public class Food implements Serializable {
         @Id
+//        @SequenceGenerator(name = "food_sequence",
+//                sequenceName = "food_sequence",
+//                allocationSize = 1
+//        )
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(nullable = false, updatable = false)
         private Long id;
@@ -16,8 +21,7 @@ public class Food implements Serializable {
         private String imageUrl;
 
 
-    public Food(Long id, String name, String type, String description, String imageUrl) {
-        this.id = id;
+    public Food(String name, String type, String description, String imageUrl) {
         this.name = name;
         this.type = type;
         this.description = description;
