@@ -4,6 +4,7 @@ import com.foodstore.food.model.Food;
 import com.foodstore.food.model.Ratings;
 import com.foodstore.food.service.FoodService;
 import com.foodstore.food.service.RatingsService;
+import com.foodstore.food.utils.Average;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,11 @@ public class FoodController {
     @GetMapping("/all")
     public ResponseEntity<List<Food>> getAllFood(){
         List<Food> foods = foodService.findAllFoods();
+        for (Food food:foods
+             ) {
+            List<Ratings> ratings = ratingsService.findAllByFoodId(food.getId());
+            Average.setFoodAverage(ratings, food);
+        }
         return new ResponseEntity<>(foods, HttpStatus.OK);
     }
 
@@ -35,14 +41,7 @@ public class FoodController {
     public ResponseEntity<Food> getFoodById(@PathVariable("id") Long id){
         Food food = foodService.findFoodById(id);
         List<Ratings> ratings = ratingsService.findAllByFoodId(id);
-        double sum =0;
-        double average;
-        for (Ratings rating: ratings
-             ) {
-            sum= sum + rating.getRating();
-        }
-        average = sum/ratings.size();
-        food.setRating(average);
+        Average.setFoodAverage(ratings, food);
         return new ResponseEntity<>(food, HttpStatus.OK);
     }
 
