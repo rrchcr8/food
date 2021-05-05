@@ -19,6 +19,8 @@ public class Food implements Serializable {
         @ManyToOne
         private FoodType foodType;
 //        private String type;
+
+        @Transient //This field wont be a column
         private double rating;
         private String description;
         private String imageUrl;
@@ -27,13 +29,12 @@ public class Food implements Serializable {
     public Food() {
     }
 
-    public Food(String name, String description, String imageUrl, FoodType foodType, double rating) {
+    public Food(String name, String description, String imageUrl, FoodType foodType) {
         this.name = name;
         this.foodType= foodType;
 //        //this.type = type;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.rating=rating;
     }
 
     public Long getId() {

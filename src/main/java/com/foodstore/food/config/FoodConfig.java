@@ -28,8 +28,8 @@ public class FoodConfig {
 
         return args -> {
             FoodType bolivian = new FoodType("bolivian");
-            Food food1 = new Food("charque", "queso", "464654", bolivian,4.0);
-            Food food2 = new Food("pato", "desc3", "464654", bolivian,4.0);
+            Food food1 = new Food("charque", "queso", "464654", bolivian);
+            Food food2 = new Food("pato", "desc3", "464654", bolivian);
             foodList.add(food1);
             foodList.add(food2);
             foodTypeList.add(bolivian);

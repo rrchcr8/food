@@ -10,9 +10,9 @@ public class FoodApplication {
 		SpringApplication.run(FoodApplication.class, args);
 		//TO DO
 //		integrate swagger
-//		create utils for calculating averages
-//		hige raginf fields in food class
-//		impolement average in  get all
+//		create utils for calculating averages (/)
+//		hige raginf fields in food class (/)
+//		impolement average in  get all (/)
 //		implement add rating sertvice (/)
 //		implement pedidos table
 		//deploy in github actions
